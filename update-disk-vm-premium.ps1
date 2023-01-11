@@ -1,5 +1,8 @@
 Write-Verbose "https://github.com/marcosoikawa/update-disk-premium-vms" -Verbose
 
+# Name of the resource group that contains the VMs
+$rgName = 'Hiro-VMs'
+
 # Ensures you do not inherit an AzContext in your runbook
 Disable-AzContextAutosave -Scope Process
 # Connect to Azure with system-assigned managed identity
@@ -12,9 +15,6 @@ $AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription -Defa
 Write-Verbose "Subscription to work against: $AzureContext.Subscription" -Verbose
 
 $storageType = 'Premium_LRS'
-
-# Name of the resource group that contains the VM
-$rgName = 'Hiro-VMs'
 
 Write-Verbose "Working on this Resrouce Group: $rgName" -Verbose
 
